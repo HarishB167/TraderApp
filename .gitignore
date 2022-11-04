@@ -1,1 +1,5 @@
+*.pyc
+*.dat
+
 .vscode/
+data/

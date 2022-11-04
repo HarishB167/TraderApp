@@ -1,7 +1,6 @@
 To Do
 
-- Create a broker login
-- Create a configuration getting username and password from environment variables
+- Create a broker login : Done
 - Get ohlc data as desired - create functions for that
 - Create gui to plot ohlc data
 - Create indicators
