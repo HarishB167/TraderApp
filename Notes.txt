@@ -1,6 +1,7 @@
 To Do
 
 - Create a broker login : Done
+- Save enctoken in json file create utility function for same
 - Get ohlc data as desired - create functions for that
 - Create gui to plot ohlc data
 - Create indicators

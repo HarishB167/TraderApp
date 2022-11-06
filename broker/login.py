@@ -3,7 +3,7 @@ from getpass import getpass
 
 import requests as rqs
 
-from . import constants
+from . import constants, utils
 
 class Login:
 
@@ -27,15 +27,13 @@ class Login:
             request_id = data['data']['request_id']
             r2 = self.twofa(id, request_id)
             self.save_enctoken(r2.cookies['enctoken'])
+            self.save_user_id(id)
             return r, r2
         return None, None
 
     def save_enctoken(self, enctoken):
         print("Saving enctoken : ", enctoken)
-        
-        if not os.path.exists(constants.DATA_FOLDER):
-            os.makedirs(constants.DATA_FOLDER)
+        utils.save_broker_data("enctoken", enctoken)
 
-        filepath = os.path.join(constants.DATA_FOLDER, constants.BROKER_INFO_FILE)
-        with open(filepath, 'w') as file:
-            file.write(enctoken)
+    def save_user_id(self, user_id):
+        utils.save_broker_data("user_id", user_id)

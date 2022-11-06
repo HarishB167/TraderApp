@@ -1,6 +1,8 @@
 import sys
+from datetime import datetime, timedelta
 
 import broker
+import ui
 
 def process_args():
     print("Program loaded")
@@ -8,6 +10,17 @@ def process_args():
         if sys.argv[1] == "login":
             print("Logging in...")
             broker.Login().login()
+        if sys.argv[1] == "download":
+            print("Downloading")
+            toDate = datetime.now()
+            fromDate = toDate - timedelta(days = 4510)
+            broker.Downloader().download_data("1270529", broker.c.ZERODHA_INTERVAL_TYPES["5minute"], fromDate, toDate, 'ICICIBANK')
+
+        if sys.argv[1] == 'plot':
+            print("Plotting")
+            filename = "data/stock_data/5minute/ICICIBANK.csv"
+            ui.Chart().plot(filename)
+
 
 if __name__ == "__main__":
     process_args()
