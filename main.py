@@ -3,6 +3,7 @@ from datetime import datetime, timedelta
 
 import broker
 import ui
+import supervisor as sp
 
 def process_args():
     print("Program loaded")
@@ -20,6 +21,11 @@ def process_args():
             print("Plotting")
             filename = "data/stock_data/5minute/ICICIBANK.csv"
             ui.Chart().plot(filename)
+
+        if sys.argv[1] == "supervise":
+            print("Supervising")
+            sp.Supervise().run()
+
 
 
 if __name__ == "__main__":
