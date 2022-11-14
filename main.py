@@ -4,6 +4,7 @@ from datetime import datetime, timedelta
 import broker
 import ui
 import supervisor as sp
+import stock_alerts as sa
 
 def process_args():
     print("Program loaded")
@@ -26,6 +27,9 @@ def process_args():
             print("Supervising")
             sp.Supervise().run()
 
+        if sys.argv[1] == "alert":
+            print("Alerting service")
+            sa.DataLoader().run()
 
 
 if __name__ == "__main__":
