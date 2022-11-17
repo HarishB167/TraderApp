@@ -97,4 +97,7 @@ class DataLoader:
             time.sleep(10)
 
     def run(self):
-        self.alert_if_trigger()
+        try:
+            self.alert_if_trigger()
+        except Exception as e:
+            print(f"Error occured : {e}")
